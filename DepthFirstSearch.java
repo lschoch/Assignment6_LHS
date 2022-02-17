@@ -7,17 +7,17 @@
  */
 public class DepthFirstSearch {       
 	// Node root;
-	String str = " Node visited   Height   Number of nodes\n"
-			+ " ------------   ------   ---------------\n";
+	String str = "  Node value   Height   Number of nodes\n"
+			+ "  ----------   ------   ---------------\n";
 	
-	public DepthFirstSearch() {               
-		System.out.println("\nCall DFS with root node to do a Depth First Preorder Search.");
+	public DepthFirstSearch() {
+		
 	}
 	public String DFS(Node node) {
 		// depth first pre-order traversal
 		if (node != null) {
 			// Print the value of each node as you traverse it.
-			str += String.format("     %3d         %2d            %2d\n",
+			str += String.format("     %3d         %2d           %2d\n",
 					node.getData(), node.getHeight(), node.numberOfNodes());
 			DFS(node.getlChild());
 			DFS(node.getrChild());

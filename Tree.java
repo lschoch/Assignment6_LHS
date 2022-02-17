@@ -88,6 +88,8 @@ public class Tree {
 	}// end GeneratePracticeTree
 	
 	public void printTree() {
+		
+		System.out.println(" ");
 		System.out.println("Preorder traverse using PreorderIterator:");
 		PreorderIterator poi = new PreorderIterator();
 		String str = "";
@@ -101,6 +103,7 @@ public class Tree {
 		while (ioi.hasNext())
 			str+= ioi.next() + " ";
 		System.out.println(str);
+		System.out.println(" ");
 	}
 	
 	/**

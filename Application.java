@@ -22,6 +22,9 @@ public class Application {
 		Tree aTree = new Tree(); //Creates a tree with root
 		Node root = aTree.generatePracticeTree(height);
 		DepthFirstSearch aSearch = new DepthFirstSearch();
+		System.out.println("------------------------------------------------------------");
+		System.out.println("Call DFS with root node to do a Depth First Preorder Search.");
+//		System.out.println("____________________________________________________________\n");
 		System.out.println(aSearch.DFS(root));
 		aTree.printTree();
 	}// end main
