@@ -3,12 +3,13 @@
  * of a binary tree.
  * 
  * @author Lawrence Schoch
- * @version 1.1
+ * @version 1.0
  */
 public class DepthFirstSearch {       
-	Node root;
+	// Node root;
 	String str = " Node visited   Height   Number of nodes\n"
 			+ " ------------   ------   ---------------\n";
+	
 	public DepthFirstSearch() {               
 		System.out.println("\nCall DFS with root node to do a Depth First Search.\n");
 	}

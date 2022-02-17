@@ -7,11 +7,12 @@
  */
 public class Node {
 	private int data;
-	private Node lChild;
-	private Node rChild;
+	private Node lChild; // left child node
+	private Node rChild; // right child node
 	
 	/**
-	 * Constructor
+	 * Constructor. Creates a node with the input 
+	 * data and null child fields.
 	 * 
 	 * @param data The data for this node.
 	 */
@@ -22,8 +23,7 @@ public class Node {
 	}// end constructor
 	
 	/**
-	 * Returns height of the tree rooted at this node. Uses private
-	 * helper method to hide this node from client.
+	 * Returns height of the tree rooted at this node. 
 	 * 
 	 * @return the height
 	 */
@@ -32,28 +32,15 @@ public class Node {
 		if (this.lChild != null && this.rChild != null) 
 			return 1 + Math.max(this.lChild.getHeight(), 
 				this.rChild.getHeight());
+		// one or both child nodes are null
 		else if (this.rChild != null)
 			return 1 + this.rChild.getHeight();
 		else if (this.lChild != null)
 			return 1 + this.lChild.getHeight();
+		// both child nodes are null
 		else
 			return height;
 	}
-	
-	/**
-	 * Private helper method to hide this node from client. 
-	 * Returns height of tree rooted at this node.
-	 * 
-	 * @param data The root of this node.
-	 */
-//	private int getHeight(Node data) {
-//		int height = 0;
-//		if (data != null) {
-//			height = 1 + Math.max(this.lChild.getHeight(), 
-//					this.rChild.getHeight());
-//		}
-//		return height;
-//	}// end getHeight
 	
 	/**
 	 * Calculates the number of nodes in the tree rooted at this node. 
@@ -71,6 +58,8 @@ public class Node {
 	}// end numberOfNodes
 	
 	/**
+	 * Gets data from the root node.
+	 * 
 	 * @return the data
 	 */
 	public int getData() {
@@ -78,6 +67,8 @@ public class Node {
 	}// end getData
 	
 	/**
+	 * Sets date of the root node.
+	 * 
 	 * @param data the data to set
 	 */
 	public void setData(int data) {
@@ -85,6 +76,8 @@ public class Node {
 	}// end setData
 	
 	/**
+	 * Gets left child.
+	 * 
 	 * @return the lChild
 	 */
 	public Node getlChild() {
@@ -92,6 +85,8 @@ public class Node {
 	}// end getlChild
 	
 	/**
+	 * Sets left child.
+	 * 
 	 * @param lChild the lChild to set
 	 */
 	public void setlChild(Node lChild) {
@@ -99,6 +94,8 @@ public class Node {
 	}// end setlChild
 	
 	/**
+	 * Gets right child.
+	 * 
 	 * @return the rChild
 	 */
 	public Node getrChild() {
@@ -106,6 +103,8 @@ public class Node {
 	}// end getrChild
 	
 	/**
+	 * Sets right child.
+	 * 
 	 * @param rChild the rChild to set
 	 */
 	public void setrChild(Node rChild) {
@@ -114,6 +113,7 @@ public class Node {
 	
 	/**
 	 * Generates a string that lists this object's fields.
+	 * 
 	 * @return The string
 	 */
 	@Override
@@ -121,7 +121,5 @@ public class Node {
 		return "Node [data=" + data + ", lChild=" + lChild + ", rChild=" 
 				+ rChild + "]";
 	}// end toString
-	
-	
 	
 }// end class
