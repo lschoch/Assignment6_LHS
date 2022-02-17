@@ -11,7 +11,7 @@ public class DepthFirstSearch {
 			+ " ------------   ------   ---------------\n";
 	
 	public DepthFirstSearch() {               
-		System.out.println("\nCall DFS with root node to do a Depth First Search.\n");
+		System.out.println("\nCall DFS with root node to do a Depth First Search.");
 	}
 	public String DFS(Node node) {
 		// depth first pre-order traversal

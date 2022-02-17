@@ -23,6 +23,7 @@ public class Application {
 		Node root = aTree.generatePracticeTree(height);
 		DepthFirstSearch aSearch = new DepthFirstSearch();
 		System.out.println(aSearch.DFS(root));
+		aTree.printTree();
 	}// end main
 
 }// end class

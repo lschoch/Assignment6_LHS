@@ -1,6 +1,8 @@
 import java.util.Queue; // import the Queue class
 import java.util.LinkedList;
-
+import java.util.Iterator;
+import java.util.Stack;
+import java.util.NoSuchElementException;
 /**
  * A class that generates a binary tree of specified height.
  * 
@@ -41,7 +43,7 @@ public class Tree {
 
 	/**
 	 * Method to generate a binary tree of specified height.
-	 * Uses cue to generate the tree breadth-first.
+	 * Uses a queue to generate the tree breadth-first.
 	 * 
 	 * @param height The height of the tree.
 	 * @return The root node data.
@@ -83,6 +85,160 @@ public class Tree {
 		   System.out.println("Level: "+level);
 	   }
 	   return root;
-	}// endGeneratePracticeTree
+	}// end GeneratePracticeTree
+	
+	public void printTree() {
+		System.out.println("Preorder traverse using PreorderIterator:");
+		PreorderIterator poi = new PreorderIterator();
+		String str = "";
+		while (poi.hasNext())
+			str+= poi.next() + " ";
+		System.out.println(str);
+		System.out.println();
+		System.out.println("Inorder traverse using InorderIterator:");
+		InorderIterator ioi = new InorderIterator();
+		str = "";
+		while (ioi.hasNext())
+			str+= ioi.next() + " ";
+		System.out.println(str);
+	}
+	
+	/**
+	 * A class to create an iterator that does a preorder traverse 
+	 * of the binary tree. 
+	 */
+	private class PreorderIterator implements Iterator<Integer> {
+		private Stack<Node> nodeStack;
+		private Node currentNode;
+		
+		/**
+		 * Empty-argument constructor.
+		 */
+		public PreorderIterator() {
+			nodeStack = new Stack<>();
+			currentNode = root;
+		} // end empty-argument constructor
+		
+		/**
+		 * Method to determine whether the entire tree has been 
+		 * traversed.
+		 * 
+		 * @return True if there are elements remaining.
+		 */
+		public boolean hasNext() {
+			return !nodeStack.isEmpty() || (currentNode != null);
+		} // end hasNext
+		
+		/**
+		 * Method to obtain the next element in the traverse.
+		 * 
+		 * @return The next element.
+		 * @throws NoSuchElementException
+		 */
+		public Integer next() {
+			Integer result = -1;
+			while (currentNode != null  || !nodeStack.isEmpty()) {
+				// Find leftmost node with no left child
+				while (currentNode != null) {
+					if (currentNode.getlChild() != null)
+						nodeStack.push(currentNode);
+					result = currentNode.getData();
+					currentNode = currentNode.getlChild();
+					return result;
+				} // end while	
+		
+				// Got leftmost node, now move to its right subtree
+				if (!nodeStack.isEmpty())
+					// Assertion: nextNode != null, since nodeStack was not empty
+					// before the pop
+					currentNode = nodeStack.pop().getrChild();
+				else
+					throw new NoSuchElementException();
+			}
+			return result;
+		} // end next
+		
+		/**
+		 * Implementation of remove required by interface but not 
+		 * supported by this iterator configuration.
+		 * 
+		 * @throws UnsupportedOperationException
+		 */
+		public void remove() {
+			throw new UnsupportedOperationException();
+		} // end remove
+		   
+	} // end PreorderIterator
+	
+	/**
+	 * A class to create an iterator that does an inorder traverse 
+	 * of the binary tree. 
+	 */
+	private class InorderIterator implements Iterator<Integer> {
+	   private Stack<Node> nodeStack;
+	   private Node currentNode;
+	   
+	   /**
+		 * Empty-argument constructor.
+		 */
+	   public InorderIterator()
+	   {
+	      nodeStack = new Stack<>();
+	      currentNode = root;
+	   } // end empty-argument constructor
+	   
+	   /**
+		 * Method to determine whether the entire tree has been 
+		 * traversed.
+		 * 
+		 * @return True if there are elements remaining.
+		 */
+	   public boolean hasNext() 
+	   {
+	      return !nodeStack.isEmpty() || (currentNode != null);
+	   } // end hasNext
+	   
+	   /**
+		 * Method to obtain the next element in the traverse.
+		 * 
+		 * @return The next element.
+		 * @throws NoSuchElementException
+		 */
+	   public Integer next()
+	   {
+	      Node nextNode = null;
+
+	      // Find leftmost node with no left child
+	      while (currentNode != null)
+	      {
+	         nodeStack.push(currentNode);
+	         currentNode = currentNode.getlChild();
+	      } // end while
+
+	      // Get leftmost node, then move to its right subtree
+	      if (!nodeStack.isEmpty())
+	      {
+	         nextNode = nodeStack.pop();
+	         // Assertion: nextNode != null, since nodeStack was not empty
+	         // before the pop
+	         currentNode = nextNode.getrChild();
+	      }
+	      else
+	         throw new NoSuchElementException();
+
+	      return nextNode.getData(); 
+	   } // end next
+	   
+	   /**
+		 * Implementation of remove required by interface but not 
+		 * supported by this iterator configuration.
+		 * 
+		 * @throws UnsupportedOperationException
+		 */
+	   public void remove()
+	   {
+	      throw new UnsupportedOperationException();
+	   } // end remove
+	} // end InorderIterator
 	
 }// end class
