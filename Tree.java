@@ -87,7 +87,7 @@ public class Tree {
 	   return root;
 	}// end GeneratePracticeTree
 	
-	public void printTree() {
+	public void printTraverses() {
 		
 		System.out.println(" ");
 		System.out.println("Preorder traverse using PreorderIterator:");
@@ -105,7 +105,7 @@ public class Tree {
 		System.out.println(str);
 		System.out.println(" ");
 	}
-	
+	  
 	/**
 	 * A class to create an iterator that does a preorder traverse 
 	 * of the binary tree. 
