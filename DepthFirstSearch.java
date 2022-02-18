@@ -10,9 +10,7 @@ public class DepthFirstSearch {
 	String str = "  Node value   Height   Number of nodes\n"
 			+ "  ----------   ------   ---------------\n";
 	
-	public DepthFirstSearch() {
-		
-	}
+	public DepthFirstSearch() {}
 	public String DFS(Node node) {
 		// depth first pre-order traversal
 		if (node != null) {

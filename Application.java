@@ -19,14 +19,13 @@ public class Application {
 		if (args.length > 0)
 			height = Integer.parseInt(args[0]);
 		System.out.println("Creating a tree of height " + height + ".");
-		Tree aTree = new Tree(); //Creates a tree with root
-		Node root = aTree.generatePracticeTree(height);
+		Tree aTree = new Tree(); // Creates a tree with a single node of value 1.
+		Node root = aTree.generatePracticeTree(height); // root of practice tree
 		DepthFirstSearch aSearch = new DepthFirstSearch();
 		System.out.println("------------------------------------------------------------");
 		System.out.println("Call DFS with root node to do a Depth First Preorder Search.");
-//		System.out.println("____________________________________________________________\n");
 		System.out.println(aSearch.DFS(root));
-		aTree.printTree();
+		aTree.printTraverses();
 	}// end main
 
 }// end class
